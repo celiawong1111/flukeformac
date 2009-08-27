@@ -6,8 +6,22 @@ The current version of Fluke is built on python and needs the following librarie
   * [http://code.google.com/p/mutagen/ mutagen]
   * [http://appscript.sourceforge.net/py-appscript/index.html appscript]
 
-= Details =
+= Building =
+  # If you haven't installed Fluke at all, copy Xiph.component and FLACImporter.component from the _installer_ folder to /Library/QuickTime
+  # Get ahold of mutagen and appscript through easy_install or by grabbing the source from the links above.
+  # Make sure you've got the latest py2app:
+{{{
+sudo easy_install -U py2app
+}}}
+  # Build!
+{{{
+python setup.py py2app
+}}}
+  # Use the optional *-A* flag at the end if you're just screwing around and not building for distribution.
+
+= What it does =
 The general program flow is like this:
   # Clean up and process the input
   # Add tracks via appscript
   # Look up the missing metadata via mutagen (at the moment that would be the track number which iTunes doesn't pick up through Xiph.org) and assign it via appscript
+  # Convert the tracks if the user specified it.
